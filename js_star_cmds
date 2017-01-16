@@ -1,0 +1,176 @@
+ ================================================================================
+
+ bbad: wordstarish keybings...
+ 
+ ------------------------------------------------------------------------
+       ^J bindings: setting bookmarks and various block commands
+       ^J instead of ^K (^L could be another good choice)
+ ------------------------------------------------------------------------
+
+setmark		^J 0 TO 9	Set bookmark 0..9
+
+ bbad: block a la wordstar
+
+ saving/adding block to a file 
+:def myblocksave psh,blksave,">>"
+
+ when defining a block from bottom to top, swaps B and K -> ^JX
+:def topswap	swap,markk,tomarkb
+
+nmark,markb	^J b	mark B (start)
+nmark,markb	^J ^B	mark B (start)
+markk		^J k	mark K (end)
+markk		^J ^K	mark K (end)
+nmark		^J h	no more block
+nmark		^J ^H	no more block
+blkcpy		^J c	copy block to point
+blkcpy		^J ^C	copy block to point
+blkmove 	^J v	move block to point
+blkmove 	^J ^V	move block to point
+myblocksave	^J w	write/append block to file
+myblocksave	^J ^W	write/append block to file
+blkdel		^J d	delete block
+blkdel		^J ^D	delete block
+topswap		^J x	swap mark B and sets mark K
+topswap		^J ^X	swap mark B and sets mark K
+filt		^J |	filter block trough external cmd
+filt		^J /	filter block trough external cmd
+
+ Emulate multiple registers/clips with tmp files
+ 10 registers named /tmp/jsclip_0 .. /tmp/jsclip_9
+ ONLY FOR WORDSTARISH BLOCKS, NOT FOR EMACS-LIKE REGIONS!
+
+blksave,"/tmp/jsclip_0",rtn,"y"	^J ^O 0		write block (Overwrite) to clip 0
+blksave,"/tmp/jsclip_0",rtn,"y"	^J o 0		write block (Overwrite) to clip 0
+blksave,">>/tmp/jsclip_0",rtn	^J ^A 0		Add (>>) block to clip 0
+blksave,">>/tmp/jsclip_0",rtn	^J a 0		Add (>>) block to clip 0
+insf,"/tmp/jsclip_0",rtn	^J ^I 0		Insert content from clip 0 to point
+insf,"/tmp/jsclip_0",rtn	^J i 0		Insert content from clip 0 to point
+
+blksave,"/tmp/jsclip_1",rtn,"y"	^J ^O 1		write block (Overwrite) to clip 1
+blksave,"/tmp/jsclip_1",rtn,"y"	^J o 1		write block (Overwrite) to clip 1
+blksave,">>/tmp/jsclip_1",rtn	^J ^A 1		Add (>>) block to clip 1
+blksave,">>/tmp/jsclip_1",rtn	^J a 1		Add (>>) block to clip 1
+insf,"/tmp/jsclip_1",rtn	^J ^I 1		Insert content from clip 1 to point
+insf,"/tmp/jsclip_1",rtn	^J i 1		Insert content from clip 1 to point
+
+blksave,"/tmp/jsclip_2",rtn,"y"	^J ^O 2		write block (Overwrite) to clip 2
+blksave,"/tmp/jsclip_2",rtn,"y"	^J o 2		write block (Overwrite) to clip 2
+blksave,">>/tmp/jsclip_2",rtn	^J ^A 2		Add (>>) block to clip 2
+blksave,">>/tmp/jsclip_2",rtn	^J a 2		Add (>>) block to clip 2
+insf,"/tmp/jsclip_2",rtn	^J ^I 2		Insert content from clip 2 to point
+insf,"/tmp/jsclip_2",rtn	^J i 2		Insert content from clip 2 to point
+
+blksave,"/tmp/jsclip_3",rtn,"y"	^J ^O 3		write block (Overwrite) to clip 3
+blksave,"/tmp/jsclip_3",rtn,"y"	^J o 3		write block (Overwrite) to clip 3
+blksave,">>/tmp/jsclip_3",rtn	^J ^A 3		Add (>>) block to clip 3
+blksave,">>/tmp/jsclip_3",rtn	^J a 3		Add (>>) block to clip 3
+insf,"/tmp/jsclip_3",rtn	^J ^I 3		Insert content from clip 3 to point
+insf,"/tmp/jsclip_3",rtn	^J i 3		Insert content from clip 3 to point
+
+blksave,"/tmp/jsclip_4",rtn,"y"	^J ^O 4		write block (Overwrite) to clip 4
+blksave,"/tmp/jsclip_4",rtn,"y"	^J o 4		write block (Overwrite) to clip 4
+blksave,">>/tmp/jsclip_4",rtn	^J ^A 4		Add (>>) block to clip 4
+blksave,">>/tmp/jsclip_4",rtn	^J a 4		Add (>>) block to clip 4
+insf,"/tmp/jsclip_4",rtn	^J ^I 4		Insert content from clip 4 to point
+insf,"/tmp/jsclip_4",rtn	^J i 4		Insert content from clip 4 to point
+
+blksave,"/tmp/jsclip_5",rtn,"y"	^J ^O 5		write block (Overwrite) to clip 5
+blksave,"/tmp/jsclip_5",rtn,"y"	^J o 5		write block (Overwrite) to clip 5
+blksave,">>/tmp/jsclip_5",rtn	^J ^A 5		Add (>>) block to clip 5
+blksave,">>/tmp/jsclip_5",rtn	^J a 5		Add (>>) block to clip 5
+insf,"/tmp/jsclip_5",rtn	^J ^I 5		Insert content from clip 5 to point
+insf,"/tmp/jsclip_5",rtn	^J i 5		Insert content from clip 5 to point
+
+blksave,"/tmp/jsclip_6",rtn,"y"	^J ^O 6		write block (Overwrite) to clip 6
+blksave,"/tmp/jsclip_6",rtn,"y"	^J o 6		write block (Overwrite) to clip 6
+blksave,">>/tmp/jsclip_6",rtn	^J ^A 6		Add (>>) block to clip 6
+blksave,">>/tmp/jsclip_6",rtn	^J a 6		Add (>>) block to clip 6
+insf,"/tmp/jsclip_6",rtn	^J ^I 6		Insert content from clip 6 to point
+insf,"/tmp/jsclip_6",rtn	^J i 6		Insert content from clip 6 to point
+
+blksave,"/tmp/jsclip_7",rtn,"y"	^J ^O 7		write block (Overwrite) to clip 7
+blksave,"/tmp/jsclip_7",rtn,"y"	^J o 7		write block (Overwrite) to clip 7
+blksave,">>/tmp/jsclip_7",rtn	^J ^A 7		Add (>>) block to clip 7
+blksave,">>/tmp/jsclip_7",rtn	^J a 7		Add (>>) block to clip 7
+insf,"/tmp/jsclip_7",rtn	^J ^I 7		Insert content from clip 7 to point
+insf,"/tmp/jsclip_7",rtn	^J i 7		Insert content from clip 7 to point
+
+blksave,"/tmp/jsclip_8",rtn,"y"	^J ^O 8		write block (Overwrite) to clip 8
+blksave,"/tmp/jsclip_8",rtn,"y"	^J o 8		write block (Overwrite) to clip 8
+blksave,">>/tmp/jsclip_8",rtn	^J ^A 8		Add (>>) block to clip 8
+blksave,">>/tmp/jsclip_8",rtn	^J a 8		Add (>>) block to clip 8
+insf,"/tmp/jsclip_8",rtn	^J ^I 8		Insert content from clip 8 to point
+insf,"/tmp/jsclip_8",rtn	^J i 8		Insert content from clip 8 to point
+
+blksave,"/tmp/jsclip_9",rtn,"y"	^J ^O 9		write block (Overwrite) to clip 9
+blksave,"/tmp/jsclip_9",rtn,"y"	^J o 9		write block (Overwrite) to clip 9
+blksave,">>/tmp/jsclip_9",rtn	^J ^A 9		Add (>>) block to clip 9
+blksave,">>/tmp/jsclip_9",rtn	^J a 9		Add (>>) block to clip 9
+insf,"/tmp/jsclip_9",rtn	^J ^I 9		Insert content from clip 9 to point
+insf,"/tmp/jsclip_9",rtn	^J i 9		Insert content from clip 9 to point
+
+ ----------------------------------------------------------------------
+   ^Q bindings: goto bookmarks, start/end of block, previous position,
+      search forward/backward and line motions on screen
+ ----------------------------------------------------------------------
+
+ redefine Ctrl command as ^QQ
+ctrl		^Q q		Quote Ctrl chars
+ctrl		^Q ^Q		Quote Ctrl chars
+
+ new kbindings
+gomark		^Q 0 TO 9	Goto bookmark 0..9
+
+prevpos		^Q p	Goto previous position in position history
+prevpos		^Q ^P	Goto previous position in position history
+
+nextpos		^Q o	Goto next position in position history
+nextpos		^Q ^O	Goto next position in position history
+
+tomarkb		^Q b	goto mark B (start of block)
+tomarkb		^Q ^B	goto mark B (start of block)
+tomarkk		^Q k	goto mark K (end of block)
+tomarkk		^Q ^K	goto mark K (end of block)
+
+ffirst		^Q f		Search forward
+ffirst		^Q ^F		Search forward
+
+rfirst		^Q r		Search backwards
+rfirst		^Q ^R		Search backwards
+
+ macros for next commands
+ 
+  Recenter line
+:def recenter retype,arg,"top+height/2-line",rtn,upslide
+
+ Line at top
+:def line_top arg,"line-top",rtn,dnslide 
+
+ Line at bottom
+:def line_bottom arg,"top+height-line-1",rtn,upslide
+
+ Move to center line
+:def midline arg,"top+height/2-line",rtn,dnarw
+
+ Move to top line
+:def topline arg,"line-top",rtn,uparw
+
+ Move to bottom line
+:def bottomline arg,"top+height-line-1",rtn,dnarw
+
+recenter	^Q j		Recenter
+recenter	^Q ^J		Recenter
+line_top	^Q u		Line to Top
+line_top	^Q ^U		Line to Top
+line_bottom	^Q n		Line to bottom
+line_bottom	^Q ^N		Line to bottom
+
+topline		^Q i		Move to top line of window
+topline		^Q ^I		Move to top line of window
+midline		^Q l		Move to center line
+midline		^Q ^L		
+bottomline	^Q m		Move to bottom line of window
+bottomline	^Q ^M		Move to bottom line of window
+
+ ================================================================================
